@@ -11,7 +11,7 @@ router.put('/updateUserRole/:email', userController.updateUserRole);
 router.get('/admin/:email', userController.checkAdminStatus);
 router.get('/provider/:email', userController.checkProviderStatus);
 router.put('/updateBalance/:email', userController.updateUserBalance);
-
+router.put('/updateProfilePicture/:email', userController.updateProfilePicture);
 router.get('/balance/:email', userController.getUserBalance);
 
 module.exports = router;
