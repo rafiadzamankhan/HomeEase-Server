@@ -66,6 +66,24 @@ class UserModel {
     const user = await collection.findOne({ email });
     return user?.balance || 0;
   }
+  static async updateProfilePicture(email, photoUrl) {
+    try {
+      const collection = await this.getCollection();
+      const result = await collection.updateOne(
+        { email },
+        { $set: { photo: photoUrl } }
+      );
+
+      if (result.modifiedCount === 0) {
+        throw new Error("User not found or no changes made");
+      }
+
+      return { success: true, photo: photoUrl };
+    } catch (error) {
+      console.error("Error updating profile picture:", error);
+      throw error;
+    }
+  }
 }
 
 module.exports = UserModel;
