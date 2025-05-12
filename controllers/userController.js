@@ -106,6 +106,21 @@ const userController = {
       res.status(500).send({ error: error.message });
     }
   },
+  updateProfilePicture: async (req, res) => {
+    try {
+      const email = req.params.email;
+      const { photoUrl } = req.body;
+
+      if (!photoUrl) {
+        return res.status(400).send({ error: "Photo URL is required" });
+      }
+
+      const result = await UserModel.updateProfilePicture(email, photoUrl);
+      res.send(result);
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+    }
+  },
 };
 
 module.exports = userController;
