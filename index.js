@@ -17,7 +17,7 @@ const port = process.env.PORT || 9000;
 
 // Middleware
 const corsOptions = {
-  origin: ['http://localhost:5173'],
+  origin: ['http://localhost:5173', 'https://homeease-78ab4.web.app'],
   credential: true,
   optionSuccessStatus: 200,
 };
